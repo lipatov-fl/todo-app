@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">TodoApp</string>
+    <string name="splash_title" translatable="false">Todo</string>
+    <string name="splash_img_elem_one_description" translatable="false">Image elem one</string>
+    <string name="splash_img_elem_two_description" translatable="false">Image elem two</string>
+    <string name="splash_img_elem_three_description" translatable="false">Image elem three</string>
+</resources>
