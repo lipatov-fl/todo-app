@@ -4,4 +4,11 @@
     <string name="splash_img_elem_one_description" translatable="false">Image elem one</string>
     <string name="splash_img_elem_two_description" translatable="false">Image elem two</string>
     <string name="splash_img_elem_three_description" translatable="false">Image elem three</string>
+    <string name="sign_up_email_hint" translatable="false">Type your Email</string>
+    <string name="sign_up_pass_hint" translatable="false">Type your Password</string>
+    <string name="sign_up_repass_hint" translatable="false">Retype your Password</string>
+    <string name="sign_up_sign_text" translatable="false">Sign Up</string>
+    <string name="sign_up_registered_text" translatable="false">Already registered</string>
+    <string name="sign_up_login" translatable="false">Sign In</string>
+    <string name="sign_up_farther_btn_description" translatable="false">Farther</string>
 </resources>
