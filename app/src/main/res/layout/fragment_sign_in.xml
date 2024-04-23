@@ -131,7 +131,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     </com.google.android.material.card.MaterialCardView>
-    
+
     <ImageView
         android:id="@+id/btn_farther"
         android:layout_width="55dp"
