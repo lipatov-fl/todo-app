@@ -11,4 +11,5 @@
     <string name="sign_up_registered_text" translatable="false">Already registered</string>
     <string name="sign_up_login" translatable="false">Sign In</string>
     <string name="sign_up_farther_btn_description" translatable="false">Farther</string>
+    <string name="sign_in_not_register" translatable="false">Not Registered</string>
 </resources>
