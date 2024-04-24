@@ -40,7 +40,7 @@ class SignUpFragment : Fragment() {
 
     private fun registerEvents() {
 
-        binding.authTv.setOnClickListener{
+        binding.authTv.setOnClickListener {
             navController.navigate(R.id.action_signUpFragment_to_signInFragment)
         }
 
@@ -51,16 +51,29 @@ class SignUpFragment : Fragment() {
 
             if (email.isNotEmpty() && pass.isNotEmpty() && rePass.isNotEmpty()) {
                 if (pass == rePass) {
+                    binding.progressBar.visibility = View.VISIBLE
                     auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(
                         OnCompleteListener {
                             if (it.isSuccessful) {
-                                Toast.makeText(context, "Registered Successfully", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    context,
+                                    "Registered Successfully",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                                 navController.navigate(R.id.action_signUpFragment_to_homeFragment)
                             } else {
-                                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT)
+                                    .show()
                             }
+                            binding.progressBar.visibility = View.GONE
                         })
+                } else {
+                    Toast.makeText(context, "Empty fields not allowed", Toast.LENGTH_SHORT)
+                        .show()
                 }
+            } else {
+                Toast.makeText(context, "Password doesn't match", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }

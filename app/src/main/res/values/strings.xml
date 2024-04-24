@@ -12,4 +12,7 @@
     <string name="sign_up_login" translatable="false">Sign In</string>
     <string name="sign_up_farther_btn_description" translatable="false">Farther</string>
     <string name="sign_in_not_register" translatable="false">Not Registered</string>
+    <string name="home_add_description" translatable="false">Add</string>
+    <string name="add_todo_task">Type your task</string>
+    <string name="add_todo_close_description">Close</string>
 </resources>
