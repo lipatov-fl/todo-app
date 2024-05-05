@@ -15,4 +15,7 @@
     <string name="home_add_description" translatable="false">Add</string>
     <string name="add_todo_task">Type your task</string>
     <string name="add_todo_close_description">Close</string>
+    <string name="each_item">Item 1</string>
+    <string name="each_edit_description">Edit</string>
+    <string name="each_delete_description">Delete</string>
 </resources>
