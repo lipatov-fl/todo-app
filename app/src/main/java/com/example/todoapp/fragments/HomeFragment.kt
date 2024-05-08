@@ -31,7 +31,7 @@ class HomeFragment : Fragment(), AddTodoPopupFragment.DialogNextBtnClickListener
     private lateinit var databaseRef: DatabaseReference
     private lateinit var navController: NavController
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var popUpFragment: AddTodoPopupFragment
+    private var popUpFragment: AddTodoPopupFragment? = null
     private lateinit var adapter: TodoAdapter
     private lateinit var mList: MutableList<TodoData>
     override fun onCreateView(
@@ -52,9 +52,11 @@ class HomeFragment : Fragment(), AddTodoPopupFragment.DialogNextBtnClickListener
 
     private fun registerEvents() {
         binding.addBtnHome.setOnClickListener {
+            if (popUpFragment != null)
+                childFragmentManager.beginTransaction().remove(popUpFragment!!).commit()
             popUpFragment = AddTodoPopupFragment()
-            popUpFragment.setListener(this)
-            popUpFragment.show(childFragmentManager, "AddTodoPopupFragment")
+            popUpFragment!!.setListener(this)
+            popUpFragment!!.show(childFragmentManager, AddTodoPopupFragment.TAG)
         }
     }
 
@@ -98,11 +100,25 @@ class HomeFragment : Fragment(), AddTodoPopupFragment.DialogNextBtnClickListener
         databaseRef.push().setValue(todo).addOnCompleteListener {
             if (it.isSuccessful) {
                 Toast.makeText(context, "Todo saved successfully", Toast.LENGTH_SHORT).show()
-                todoEt.text = null
             } else {
                 Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT).show()
             }
-            popUpFragment.dismiss()
+            todoEt.text = null
+            popUpFragment!!.dismiss()
+        }
+    }
+
+    override fun onUpdateTask(todoData: TodoData, todoEt: TextInputEditText) {
+        val map = HashMap<String, Any>()
+        map[todoData.taskId] = todoData.task
+        databaseRef.updateChildren(map).addOnCompleteListener {
+            if (it.isSuccessful) {
+                Toast.makeText(context, "Updated successfully", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT).show()
+            }
+            todoEt.text = null
+            popUpFragment!!.dismiss()
         }
     }
 
@@ -117,6 +133,10 @@ class HomeFragment : Fragment(), AddTodoPopupFragment.DialogNextBtnClickListener
     }
 
     override fun onEditTaskBtnClicked(toDoData: TodoData) {
-        TODO("Not yet implemented")
+        if (popUpFragment != null)
+            childFragmentManager.beginTransaction().remove(popUpFragment!!).commit()
+        popUpFragment = AddTodoPopupFragment.newInstance(toDoData.taskId, toDoData.task)
+        popUpFragment!!.setListener(this)
+        popUpFragment!!.show(childFragmentManager, AddTodoPopupFragment.TAG)
     }
 }
