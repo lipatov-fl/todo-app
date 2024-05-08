@@ -7,8 +7,7 @@
 
 ### Язык: Kotlin
 
-### Бибилотеки и технологии: Gradle, AppCompat, Recycle View, View model, Lifecycle, Navigation, View, Fragment, Firebase
-
+### Бибилотеки и технологии: XML, работа с базой данных Firebase, Gradle, AppCompat, Recycle View, View model, Lifecycle, Navigation, View, Fragment
 ### Заставка:
 <img src="https://github.com/lipatov-fl/todo-app/blob/master/img1.png" width="200" height="400">
 
